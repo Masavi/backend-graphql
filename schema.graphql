@@ -1,0 +1,8 @@
+type  Query {
+	holamundo:Prueba
+}
+
+type Prueba {
+    mensaje:String!
+    codigo:Int!
+}
