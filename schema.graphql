@@ -1,8 +1,17 @@
-type  Query {
+type Query {
 	holamundo:Prueba
+}
+
+type Mutation {
+    signup(email: String!, password:String!): Auth
 }
 
 type Prueba {
     mensaje:String!
     codigo:Int!
+}
+
+type Auth {
+    token:String!
+    mensaje:String!
 }
