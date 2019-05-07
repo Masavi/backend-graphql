@@ -1,4 +1,5 @@
 const actions = require('../actions');
+const { authUserById } = require('../utils'); 
 
 const signup = (_, args, context, info) => {
     return actions.signup(args.data)
@@ -21,9 +22,12 @@ const login = (_, args, context, info) => {
 };
 
 const createUser = async (_, { data }, context, info) => {
-    return await actions.createUser(data)
-                        .then( user => user )
-                        .catch( err => console.log(err));
+
+    return authUserById(context)
+    .then( user => actions.createUser(data)
+                          .then(newUser => newUser))
+    // .then( newUser => newUser )
+    .catch( err => console.log(err));
 };
 
 module.exports = {
