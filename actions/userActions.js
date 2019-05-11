@@ -1,6 +1,14 @@
 const { Users } = require('../models');
+const { storeUpload } = require('../utils');
 
-const createUser = (data) => {
+const createUser = async (data) => {
+   if ( data.profile_img ) {  
+       const { createReadStream } = await data.profile_img;
+       const stream = createReadStream();
+       const cloud_img = await storeUpload(stream);
+       console.log(cloud_img);
+       data.profile_img = cloud_img.url;
+   }
    return Users.create(data);
 }
 

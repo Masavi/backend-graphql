@@ -5,6 +5,8 @@ type Query {
     getByGenderAndVersion(gender: String, version: Int, first_name: String): [User]
 }
 
+scalar Upload
+
 type Mutation {
     signup(data:UserCreateInput!): Auth
     login(email:String!, password:String!): Auth
@@ -27,6 +29,7 @@ input UserCreateInput {
     email: String!
     password: String!
     gender: String
+    profile_img: Upload
 }
 
 type User {

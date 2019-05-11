@@ -22,12 +22,10 @@ const login = (_, args, context, info) => {
 };
 
 const createUser = async (_, { data }, context, info) => {
-
     return authUserById(context)
-    .then( user => actions.createUser(data)
-                          .then(newUser => newUser))
-    // .then( newUser => newUser )
-    .catch( err => console.log(err));
+        .then( user => actions.createUser(data)
+                            .then(newUser => newUser))
+        .catch( err => console.log(err));
 };
 
 module.exports = {
