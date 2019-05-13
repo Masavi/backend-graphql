@@ -1,7 +1,7 @@
 const jwt = require('jsonwebtoken');
 const cloudinary = require('cloudinary');
-const { SECRET_KEY } = require('../config');
 const { getUserById } = require('../actions');
+const { SECRET_KEY } = require('../config');
 
 const authUserById = (context) => {
     const Authorization = context.request.get("Authorization");
@@ -22,7 +22,7 @@ const storeUpload = (stream) => {
     api_secret: 'a_O-ilcf3VYuP8-ZU5TxBNZGnp4' 
   });
   
-  new Promise((resolve, reject) => {
+  return new Promise((resolve, reject) => {
     const buffer = cloudinary.v2.uploader.upload_stream((err, result) => {
         if(err) { reject(err) };
         resolve(result);

@@ -2,8 +2,7 @@ const actions = require('../actions');
 const { authUserById } = require('../utils'); 
 
 const signup = (_, args, context, info) => {
-    return actions.signup(args.data)
-                  .then( token => {
+    return actions.signup(args.data).then( token => {
                       return { token, mensaje: "¡usuario creado exitosamente!" }
                   })
                   .catch(err => {
@@ -22,10 +21,11 @@ const login = (_, args, context, info) => {
 };
 
 const createUser = async (_, { data }, context, info) => {
-    return authUserById(context)
-        .then( user => actions.createUser(data)
-                            .then(newUser => newUser))
-        .catch( err => console.log(err));
+    // const user = await authUserById(context);
+    // if (!user) throw new Error("No estás autenticado");
+    return actions.createUser(data)
+        .then(newUser => newUser)
+        .catch(err => console.log(err));
 };
 
 module.exports = {

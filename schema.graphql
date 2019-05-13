@@ -39,4 +39,5 @@ type User {
     email: String!
     password: String
     gender: String
+    profile_img: String
 }

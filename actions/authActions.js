@@ -15,10 +15,7 @@ const createToken = (args) => {
 };
 
 const signup = (data) => {
-    // Englobamos el código en una promesa para manejarlo asíncronamente
     return new Promise( (resolve, reject) => {
-
-        //Crear un usuario nuevo...
         createUser(data)
             .then( user => {
                 //Crear un token con la info del usuario nuevo...
