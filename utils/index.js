@@ -1,7 +1,7 @@
 const jwt = require('jsonwebtoken');
 const cloudinary = require('cloudinary');
-const { getUserById } = require('../actions');
 const { SECRET_KEY } = require('../config');
+const { Users } = require('../models');
 
 const authUserById = (context) => {
     const Authorization = context.request.get("Authorization");
@@ -9,7 +9,7 @@ const authUserById = (context) => {
     if (Authorization) {
         const token = Authorization.replace("JWT ", "");
         const { _id } = jwt.verify(token, SECRET_KEY);
-        return getUserById(_id);
+        return Users.findOne({ _id });
     }
 
     throw new Error("No estás autenticado");

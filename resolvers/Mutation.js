@@ -21,8 +21,8 @@ const login = (_, args, context, info) => {
 };
 
 const createUser = async (_, { data }, context, info) => {
-    // const user = await authUserById(context);
-    // if (!user) throw new Error("No estás autenticado");
+    const user = await authUserById(context);
+    if (!user) throw new Error("No estás autenticado");
     return actions.createUser(data)
         .then(newUser => newUser)
         .catch(err => console.log(err));
