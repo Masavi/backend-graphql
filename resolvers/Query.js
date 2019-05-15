@@ -1,9 +1,5 @@
 const actions = require("../actions");
 
-const holamundo = (_, args, context, info) => {
-	return actions.getHolaMundo();
-};
-
 const getUsers = () => {
 	return actions.getUsers()
 			.then( users => users)
@@ -23,7 +19,6 @@ const getByGenderAndVersion = (_, args, context, info) => {
 }
 
 module.exports = {
-	holamundo,
 	getUsers,
 	getOneUser,
 	getByGenderAndVersion,

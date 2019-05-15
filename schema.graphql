@@ -1,5 +1,4 @@
 type Query {
-	holamundo:Prueba
     getUsers: [User]
     getOneUser(id: String): User
     getByGenderAndVersion(gender: String, version: Int, first_name: String): [User]
